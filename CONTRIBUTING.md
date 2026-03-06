@@ -15,6 +15,51 @@ DEVP_IT803 - Cross Platform Development (2025/26)
 
 ---
 
+## Environment Setup (Linux/Debian)
+
+Only needed once on a new machine.
+
+### 1. Install .NET 9 SDK
+
+```bash
+# Add Microsoft package repository
+wget https://packages.microsoft.com/config/debian/13/packages-microsoft-prod.deb -O /tmp/packages-microsoft-prod.deb
+sudo dpkg -i /tmp/packages-microsoft-prod.deb
+
+# Install .NET 9 SDK
+sudo apt update
+sudo apt install dotnet-sdk-9.0
+
+# Verify
+dotnet --version  # should print 9.0.x
+```
+
+### 2. Install MAUI Android workload
+
+```bash
+sudo dotnet workload install maui-android
+
+# Verify
+dotnet workload list  # should show maui-android
+```
+
+### 3. Install Android SDK
+
+```bash
+sudo apt install android-sdk
+```
+
+### 4. Install Android platform dependencies (API level 35)
+
+```bash
+sudo dotnet build -t:InstallAndroidDependencies -f net9.0-android \
+  "-p:AndroidSdkDirectory=/usr/lib/android-sdk" \
+  "-p:AcceptAndroidSDKLicenses=True" \
+  CoffeeShopApp/CoffeeShopApp.csproj
+```
+
+---
+
 ## Quick Start
 
 ```bash
@@ -23,13 +68,13 @@ git clone https://github.com/edsonesf/ATU-CP-CA1
 cd ATU-CP-CA1
 
 # Restore NuGet packages
-dotnet restore
+dotnet restore CoffeeShopApp/CoffeeShopApp.csproj
 
 # Build
-dotnet build
+dotnet build -p:AndroidSdkDirectory=/usr/lib/android-sdk CoffeeShopApp/CoffeeShopApp.csproj
 
 # Run on Android emulator
-dotnet build -t:Run -f net9.0-android
+dotnet build -t:Run -f net9.0-android -p:AndroidSdkDirectory=/usr/lib/android-sdk CoffeeShopApp/CoffeeShopApp.csproj
 ```
 
 ---
@@ -171,13 +216,13 @@ dotnet build        # must pass with 0 errors, 0 warnings
 
 ```bash
 # Restore packages
-dotnet restore
+dotnet restore CoffeeShopApp/CoffeeShopApp.csproj
 
 # Build (check for errors)
-dotnet build
+dotnet build -p:AndroidSdkDirectory=/usr/lib/android-sdk CoffeeShopApp/CoffeeShopApp.csproj
 
 # Run on Android
-dotnet build -t:Run -f net9.0-android
+dotnet build -t:Run -f net9.0-android -p:AndroidSdkDirectory=/usr/lib/android-sdk CoffeeShopApp/CoffeeShopApp.csproj
 ```
 
 Always run `dotnet build` before committing — don't commit broken code.

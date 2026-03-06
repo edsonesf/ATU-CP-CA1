@@ -40,7 +40,7 @@ public partial class BasketViewModel : BaseViewModel
     public void Clear()
     {
         Items.Clear();
-        Total = 0;
+        RecalculateTotal();
     }
 
     private void RecalculateTotal()

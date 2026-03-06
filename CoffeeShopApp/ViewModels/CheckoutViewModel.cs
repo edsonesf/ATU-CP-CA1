@@ -25,32 +25,40 @@ public partial class CheckoutViewModel : BaseViewModel
     [RelayCommand]
     async Task PlaceOrder()
     {
+        if (IsBusy) return;
+
         if (string.IsNullOrWhiteSpace(CustomerName) || string.IsNullOrWhiteSpace(Phone))
         {
             await Shell.Current.DisplayAlert("Missing Info", "Please enter your name and phone number.", "OK");
             return;
         }
 
-        var order = new Order
+        IsBusy = true;
+        try
         {
-            OrderNumber = "ATU-" + Guid.NewGuid().ToString("N")[..8].ToUpper(),
-            CustomerName = CustomerName,
-            Phone = Phone,
-            Total = _basket.Total,
-            CreatedAt = DateTime.Now
-        };
+            var order = new Order
+            {
+                OrderNumber = "ATU-" + Guid.NewGuid().ToString("N")[..8].ToUpper(),
+                CustomerName = CustomerName,
+                Phone = Phone,
+                Total = _basket.Total,
+                CreatedAt = DateTime.Now
+            };
 
-        var items = _basket.Items.ToList();
+            var items = _basket.Items.ToList();
+            await _database.SaveOrderAsync(order, items);
+            _basket.Clear();
 
-        await _database.SaveOrderAsync(order, items);
+            await Shell.Current.DisplayAlert(
+                "Order Placed! ☕",
+                $"Thank you, {order.CustomerName}!\nYour order number is: {order.OrderNumber}",
+                "OK");
 
-        _basket.Clear();
-
-        await Shell.Current.DisplayAlert(
-            "Order Placed! ☕",
-            $"Thank you, {order.CustomerName}!\nYour order number is: {order.OrderNumber}",
-            "OK");
-
-        await Shell.Current.GoToAsync("//MainMenuPage");
+            await Shell.Current.GoToAsync("//MainMenuPage");
+        }
+        finally
+        {
+            IsBusy = false;
+        }
     }
 }

@@ -2,15 +2,17 @@ namespace CoffeeShopApp.Views;
 
 public partial class OrderHistoryPage : ContentPage
 {
+    private readonly ViewModels.OrderHistoryViewModel _vm;
+
     public OrderHistoryPage(ViewModels.OrderHistoryViewModel vm)
     {
         InitializeComponent();
-        BindingContext = vm;
+        BindingContext = _vm = vm;
     }
 
     protected override void OnAppearing()
     {
         base.OnAppearing();
-        ((ViewModels.OrderHistoryViewModel)BindingContext).LoadCommand.Execute(null);
+        _vm.LoadCommand.Execute(null);
     }
 }

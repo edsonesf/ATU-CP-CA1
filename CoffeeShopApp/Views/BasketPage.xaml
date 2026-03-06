@@ -64,6 +64,7 @@
                    HorizontalOptions="End" />
             <Button Text="Proceed to Checkout"
                     Command="{Binding GoToCheckoutCommand}"
+                    IsEnabled="{Binding HasItems}"
                     BackgroundColor="#D4A96A"
                     TextColor="#2C1A0E"
                     FontAttributes="Bold"

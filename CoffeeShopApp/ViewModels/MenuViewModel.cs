@@ -8,6 +8,8 @@ public partial class MenuViewModel : BaseViewModel
 {
     private readonly BasketViewModel _basket;
 
+    public BasketViewModel Basket => _basket;
+
     public MenuViewModel(BasketViewModel basket)
     {
         _basket = basket;

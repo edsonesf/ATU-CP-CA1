@@ -39,7 +39,7 @@
                 HeightRequest="60"
                 CornerRadius="12" />
 
-        <Button Text="🛒  View Basket"
+        <Button Text="{Binding Basket.ItemCount, StringFormat='🛒  Basket ({0})'}"
                 Command="{Binding GoToBasketCommand}"
                 BackgroundColor="#D4A96A"
                 TextColor="#2C1A0E"

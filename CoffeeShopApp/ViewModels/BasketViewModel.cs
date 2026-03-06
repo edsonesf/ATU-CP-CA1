@@ -13,6 +13,9 @@ public partial class BasketViewModel : BaseViewModel
     [ObservableProperty]
     decimal total;
 
+    public bool HasItems => Items.Count > 0;
+    public int ItemCount => Items.Sum(i => i.Quantity);
+
     [RelayCommand]
     public void AddItem(AppMenuItem menuItem)
     {
@@ -38,8 +41,12 @@ public partial class BasketViewModel : BaseViewModel
         Total = 0;
     }
 
-    private void RecalculateTotal() =>
+    private void RecalculateTotal()
+    {
         Total = Items.Sum(i => i.Subtotal);
+        OnPropertyChanged(nameof(HasItems));
+        OnPropertyChanged(nameof(ItemCount));
+    }
 
     [RelayCommand]
     async Task GoToCheckout() => await Shell.Current.GoToAsync(nameof(Views.CheckoutPage));

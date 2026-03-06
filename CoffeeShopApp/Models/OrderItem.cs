@@ -1,9 +1,10 @@
+using CommunityToolkit.Mvvm.ComponentModel;
 using SQLite;
 
 namespace CoffeeShopApp.Models;
 
 [Table("OrderItems")]
-public class OrderItem
+public partial class OrderItem : ObservableObject
 {
     [PrimaryKey, AutoIncrement]
     public int Id { get; set; }
@@ -11,7 +12,9 @@ public class OrderItem
     public int OrderId { get; set; }
     public string Name { get; set; } = string.Empty;
     public decimal Price { get; set; }
-    public int Quantity { get; set; }
+
+    [ObservableProperty]
+    int quantity;
 
     [Ignore]
     public decimal Subtotal => Price * Quantity;

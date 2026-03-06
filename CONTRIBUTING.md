@@ -128,6 +128,7 @@ Format: `type: short description`
 | `docs` | Documentation only changes |
 | `style` | UI/styling changes (no logic) |
 | `refactor` | Code restructure, no new feature |
+| `improve` | Enhancement to an existing feature |
 | `test` | Adding or updating tests |
 | `chore` | Build config, packages, tooling |
 
@@ -169,6 +170,7 @@ main
 - `fix/` – bug fix
 - `docs/` – documentation
 - `refactor/` – code cleanup
+- `improve/` – enhancement to existing feature
 
 **Rules:**
 - Never commit directly to `main`
@@ -203,7 +205,8 @@ main
 
 ### Before Every Commit
 ```bash
-dotnet build        # must pass with 0 errors, 0 warnings
+dotnet build        # must pass with 0 errors
+dotnet test --project CoffeeShopApp.Tests  # must pass with 0 failures
 ```
 
 - No commented-out code

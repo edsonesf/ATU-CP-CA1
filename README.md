@@ -94,6 +94,14 @@ dotnet build -t:Run -f net9.0-android -p:AndroidSdkDirectory=/usr/lib/android-sd
 
 MVVM (Model-View-ViewModel) pattern — required by the assessment marking scheme.
 
+The solution is split into three projects:
+
+```
+CoffeeShopApp          → MAUI Android app (Views, MAUI-specific ViewModels, DI wiring)
+CoffeeShopApp.Core     → Shared class library (Models, base ViewModels, Services, Helpers)
+CoffeeShopApp.Tests    → xUnit test project (references Core only, no MAUI dependency)
+```
+
 ```
 ┌─────────────────────────────────────┐
 │           Views (XAML)              │
@@ -106,8 +114,8 @@ MVVM (Model-View-ViewModel) pattern — required by the assessment marking schem
 └────────────────┬────────────────────┘
                  │ Uses
 ┌────────────────▼────────────────────┐
-│      Services / DatabaseService     │
-│  SQLite async CRUD operations       │
+│         IDatabaseService            │
+│  SaveOrderAsync / GetRecentOrders   │
 └────────────────┬────────────────────┘
                  │ Maps to
 ┌────────────────▼────────────────────┐
@@ -122,6 +130,7 @@ MVVM (Model-View-ViewModel) pattern — required by the assessment marking schem
 - All bindable properties use `[ObservableProperty]`
 - `BasketViewModel` registered as Singleton (shared state across pages)
 - `DatabaseService` registered as Singleton (single DB connection)
+- Shell navigation calls are isolated in MAUI ViewModels — Core ViewModels have no MAUI dependency
 
 ## 5. Menu
 
@@ -136,11 +145,14 @@ cd CoffeeShopApp.Tests
 dotnet test
 ```
 
-**What is tested:**
+**What is tested (15 tests):**
 - `BasketViewModel` — add item, duplicate item quantity increment, total calculation, remove item, HasItems, ItemCount, Clear
 - `OrderItem.Subtotal` — computed price × quantity
+- `CheckoutViewModel` — empty name blocked, invalid phone blocked, valid order saves once and clears basket, order number has `ATU-` prefix
 
 Tests target `CoffeeShopApp.Core`, a shared class library containing Models, ViewModels (pure logic), and Services — decoupled from MAUI so they run on any platform without an Android device.
+
+Shell navigation and alerts are abstracted behind virtual methods (`ShowAlertAsync`, `OnOrderPlacedAsync`), allowing tests to use a `TestableCheckoutViewModel` subclass with no MAUI dependency.
 
 ## 7. Limitations & Future Work
 
@@ -152,7 +164,6 @@ Tests target `CoffeeShopApp.Core`, a shared class library containing Models, Vie
 - No push notifications for order status
 
 **What would be added next:**
-- `IDatabaseService` interface for better testability and swappability
 - Backend API (ASP.NET Core) to centralise orders across devices
 - Order status tracking (Pending → Ready → Collected)
 - Menu loaded from database instead of hardcoded in ViewModel

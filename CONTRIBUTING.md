@@ -217,18 +217,59 @@ dotnet test --project CoffeeShopApp.Tests  # must pass with 0 failures
 
 ## Build & Run
 
+> **Important (Linux):** `/home/edson/ATU` is a symlink. Always use the real path `/home/edson/Documents/ATU/...` in build commands, otherwise the Android resource packager (aapt2) will fail to find generated assets.
+
 ```bash
 # Restore packages
 dotnet restore CoffeeShopApp/CoffeeShopApp.csproj
 
-# Build (check for errors)
-dotnet build -p:AndroidSdkDirectory=/usr/lib/android-sdk CoffeeShopApp/CoffeeShopApp.csproj
+# Build (check for errors) — use real path, not symlink
+dotnet build -p:AndroidSdkDirectory=/usr/lib/android-sdk \
+  /home/edson/Documents/ATU/CrossPlatform/CA1/ATU-CP-CA1/CoffeeShopApp/CoffeeShopApp.csproj
 
 # Run on connected device or emulator
-dotnet build -t:Run -f net9.0-android -p:AndroidSdkDirectory=/usr/lib/android-sdk CoffeeShopApp/CoffeeShopApp.csproj
+dotnet build -t:Run -f net9.0-android -p:AndroidSdkDirectory=/usr/lib/android-sdk \
+  /home/edson/Documents/ATU/CrossPlatform/CA1/ATU-CP-CA1/CoffeeShopApp/CoffeeShopApp.csproj
 ```
 
 Always run `dotnet build` before committing — don't commit broken code.
+
+---
+
+## Building an APK
+
+### Step 1 — Run tests first
+
+```bash
+dotnet test CoffeeShopApp.Tests/CoffeeShopApp.Tests.csproj
+```
+
+### Step 2 — Build the APK
+
+```bash
+dotnet publish -f net9.0-android -c Release \
+  -p:AndroidSdkDirectory=/usr/lib/android-sdk \
+  -p:AndroidPackageFormat=apk \
+  /home/edson/Documents/ATU/CrossPlatform/CA1/ATU-CP-CA1/CoffeeShopApp/CoffeeShopApp.csproj
+```
+
+The signed APK will be at:
+```
+CoffeeShopApp/bin/Release/net9.0-android/publish/com.companyname.coffeeshopapp-Signed.apk
+```
+
+### Step 3 — Install on device
+
+**Option A — ADB (recommended):**
+```bash
+/usr/lib/android-sdk/platform-tools/adb install \
+  CoffeeShopApp/bin/Release/net9.0-android/publish/com.companyname.coffeeshopapp-Signed.apk
+```
+
+**Option B — Manual:**
+1. Copy the `.apk` file to your phone (USB, email, or cloud)
+2. Open it on the phone
+3. Allow "Install from unknown sources" if prompted (Settings → Security)
 
 ---
 

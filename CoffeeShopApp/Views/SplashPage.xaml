@@ -9,8 +9,9 @@
                          HorizontalOptions="Center"
                          Spacing="16">
 
-        <Label Text="☕"
-               FontSize="80"
+        <Image Source="logo.png"
+               HeightRequest="200"
+               WidthRequest="200"
                HorizontalOptions="Center" />
 
         <Label Text="The ATU Brew"

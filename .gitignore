@@ -52,3 +52,55 @@ CodeCoverage/
 *.VisualState.xml
 TestResult.xml
 nunit-*.xml
+
+# .NET MAUI / Xamarin
+*.userprefs
+*.usertasks
+.vs/
+.idea/
+*.DS_Store
+
+# Android
+**/android/build/
+**/android/.gradle/
+local.properties
+
+# iOS / macOS
+**/ios/build/
+**/maccatalyst/build/
+*.xcworkspace
+*.xcuserstate
+DerivedData/
+
+# SQLite local database (never commit DB files)
+*.db
+*.db3
+*.sqlite
+*.sqlite3
+
+# User-specific files
+*.user
+*.suo
+*.sln.docstates
+
+# Rider / JetBrains
+.idea/
+*.sln.iml
+
+# VS Code / VSCodium
+.vscode/
+
+# OS generated
+Thumbs.db
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+
+# Temp / swap files
+*.tmp
+*.bak
+*.orig
+*.swp
+*.swo
+*.log

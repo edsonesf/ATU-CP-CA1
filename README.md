@@ -23,7 +23,9 @@ Continuous Assessment 1 (CA1) – The ATU Brew Coffee Shop App
 3. [Technology Stack](#3-technology-stack)
 4. [Architecture](#4-architecture)
 5. [Menu](#5-menu)
-6. [Documentation](#6-documentation)
+6. [Testing](#6-testing)
+7. [Limitations & Future Work](#7-limitations--future-work)
+8. [Documentation](#8-documentation)
 
 ## 1. Overview
 
@@ -125,7 +127,37 @@ MVVM (Model-View-ViewModel) pattern — required by the assessment marking schem
 
 See [coffee-shop.md](coffee-shop.md) for the full menu with prices.
 
-## 6. Documentation
+## 6. Testing
+
+The solution includes a separate test project `CoffeeShopApp.Tests` using xUnit.
+
+```bash
+cd CoffeeShopApp.Tests
+dotnet test
+```
+
+**What is tested:**
+- `BasketViewModel` — add item, duplicate item quantity increment, total calculation, remove item, HasItems, ItemCount, Clear
+- `OrderItem.Subtotal` — computed price × quantity
+
+Tests target `CoffeeShopApp.Core`, a shared class library containing Models, ViewModels (pure logic), and Services — decoupled from MAUI so they run on any platform without an Android device.
+
+## 7. Limitations & Future Work
+
+**Current limitations:**
+- Android only — iOS/macOS builds require a Mac
+- Menu is hardcoded — no admin interface to add/edit items
+- No user authentication — anyone can place an order
+- SQLite is local to the device — no cloud sync or backend API
+- No push notifications for order status
+
+**What would be added next:**
+- `IDatabaseService` interface for better testability and swappability
+- Backend API (ASP.NET Core) to centralise orders across devices
+- Order status tracking (Pending → Ready → Collected)
+- Menu loaded from database instead of hardcoded in ViewModel
+
+## 8. Documentation
 
 - [coffee-shop.md](coffee-shop.md) – full menu with prices
 - [CONTRIBUTING.md](CONTRIBUTING.md) – git workflow, environment setup, device testing guide

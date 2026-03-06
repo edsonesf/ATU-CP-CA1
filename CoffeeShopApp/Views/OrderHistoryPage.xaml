@@ -2,7 +2,7 @@
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="CoffeeShopApp.Views.OrderHistoryPage"
-             Title="Today's Orders"
+             Title="Recent Orders"
              BackgroundColor="#2C1A0E">
 
     <Grid RowDefinitions="Auto,*"
@@ -36,7 +36,7 @@
                             <Label Text="{Binding CustomerName}"
                                    FontSize="14"
                                    TextColor="#D4A96A" />
-                            <Label Text="{Binding CreatedAt, StringFormat='{0:HH:mm}'}"
+                            <Label Text="{Binding CreatedAt, StringFormat='{0:dd MMM, HH:mm}'}"
                                    FontSize="12"
                                    TextColor="#888" />
                         </VerticalStackLayout>

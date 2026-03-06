@@ -26,13 +26,12 @@ public class DatabaseService
         }
     }
 
-    public async Task<List<Order>> GetTodaysOrdersAsync()
+    public async Task<List<Order>> GetRecentOrdersAsync()
     {
         await InitAsync();
-        var today = DateTime.Today;
-        var tomorrow = today.AddDays(1);
+        var since = DateTime.Today.AddDays(-7);
         return await _db!.Table<Order>()
-            .Where(o => o.CreatedAt >= today && o.CreatedAt < tomorrow)
+            .Where(o => o.CreatedAt >= since)
             .ToListAsync();
     }
 }

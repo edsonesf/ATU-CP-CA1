@@ -21,7 +21,7 @@ public partial class OrderHistoryViewModel : BaseViewModel
     {
         IsBusy = true;
         Orders.Clear();
-        var orders = await _database.GetTodaysOrdersAsync();
+        var orders = await _database.GetRecentOrdersAsync();
         foreach (var order in orders)
             Orders.Add(order);
         IsBusy = false;

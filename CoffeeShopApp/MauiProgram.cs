@@ -20,6 +20,7 @@ public static class MauiProgram
 
         // Services — Singleton (one instance for the app lifetime)
         builder.Services.AddSingleton<DatabaseService>();
+        builder.Services.AddSingleton<AppShell>();
 
         // ViewModels — BasketViewModel is Singleton so basket state is shared
         builder.Services.AddSingleton<BasketViewModel>();

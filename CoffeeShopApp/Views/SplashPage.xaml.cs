@@ -11,6 +11,7 @@ public partial class SplashPage : ContentPage
     {
         base.OnAppearing();
         await Task.Delay(2000);
-        Application.Current!.Windows[0].Page = new AppShell();
+        var shell = IPlatformApplication.Current.Services.GetRequiredService<AppShell>();
+        Application.Current!.Windows[0].Page = shell;
     }
 }

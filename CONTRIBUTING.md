@@ -221,8 +221,48 @@ dotnet restore CoffeeShopApp/CoffeeShopApp.csproj
 # Build (check for errors)
 dotnet build -p:AndroidSdkDirectory=/usr/lib/android-sdk CoffeeShopApp/CoffeeShopApp.csproj
 
-# Run on Android
+# Run on connected device or emulator
 dotnet build -t:Run -f net9.0-android -p:AndroidSdkDirectory=/usr/lib/android-sdk CoffeeShopApp/CoffeeShopApp.csproj
 ```
 
 Always run `dotnet build` before committing — don't commit broken code.
+
+---
+
+## Testing on a Device
+
+### Option 1 — Physical Android Phone (recommended)
+
+1. On your phone: **Settings → About Phone → tap "Build Number" 7 times** to unlock Developer Options
+2. Go to **Settings → Developer Options → enable USB Debugging**
+3. Connect phone to your computer via USB and accept the prompt on the phone
+4. Verify the device is detected:
+   ```bash
+   /usr/lib/android-sdk/platform-tools/adb devices
+   # Should show your device serial number
+   ```
+5. Deploy and run:
+   ```bash
+   dotnet build -t:Run -f net9.0-android -p:AndroidSdkDirectory=/usr/lib/android-sdk CoffeeShopApp/CoffeeShopApp.csproj
+   ```
+
+### Option 2 — Android Emulator
+
+1. Install the emulator tools:
+   ```bash
+   sudo /usr/lib/android-sdk/tools/bin/sdkmanager "emulator" "system-images;android-35;google_apis;x86_64"
+   ```
+2. Create a virtual device:
+   ```bash
+   /usr/lib/android-sdk/tools/bin/avdmanager create avd -n Pixel6 -k "system-images;android-35;google_apis;x86_64"
+   ```
+3. Start the emulator:
+   ```bash
+   /usr/lib/android-sdk/emulator/emulator -avd Pixel6 &
+   ```
+4. Wait for it to boot, then deploy:
+   ```bash
+   dotnet build -t:Run -f net9.0-android -p:AndroidSdkDirectory=/usr/lib/android-sdk CoffeeShopApp/CoffeeShopApp.csproj
+   ```
+
+> **Note:** The emulator requires hardware virtualisation (KVM on Linux). Check with `kvm-ok`. It also uses significant RAM — a physical device is simpler.

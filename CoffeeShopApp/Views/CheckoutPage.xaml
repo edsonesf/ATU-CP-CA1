@@ -2,5 +2,46 @@
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="CoffeeShopApp.Views.CheckoutPage"
-             Title="Checkout">
+             Title="Checkout"
+             BackgroundColor="#2C1A0E">
+
+    <VerticalStackLayout Padding="32"
+                         Spacing="16"
+                         VerticalOptions="Center">
+
+        <Label Text="Your Details"
+               FontSize="22"
+               FontAttributes="Bold"
+               TextColor="White" />
+
+        <Entry Placeholder="Full Name"
+               Text="{Binding CustomerName}"
+               PlaceholderColor="#888"
+               TextColor="White"
+               BackgroundColor="#3D2410"
+               HeightRequest="50" />
+
+        <Entry Placeholder="Phone Number"
+               Text="{Binding Phone}"
+               Keyboard="Telephone"
+               PlaceholderColor="#888"
+               TextColor="White"
+               BackgroundColor="#3D2410"
+               HeightRequest="50" />
+
+        <BoxView HeightRequest="1"
+                 Color="#6F3D1F"
+                 Margin="0,8" />
+
+        <Button Text="Place Order"
+                Command="{Binding PlaceOrderCommand}"
+                BackgroundColor="#D4A96A"
+                TextColor="#2C1A0E"
+                FontAttributes="Bold"
+                FontSize="18"
+                HeightRequest="56"
+                CornerRadius="12" />
+
+    </VerticalStackLayout>
+
 </ContentPage>

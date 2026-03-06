@@ -1,16 +1,16 @@
 using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
-using CoffeeShopApp.Models;
-using CoffeeShopApp.Services;
+using CoffeeShopApp.Core.Models;
+using CoffeeShopApp.Core.Services;
 
 namespace CoffeeShopApp.ViewModels;
 
 public partial class CheckoutViewModel : BaseViewModel
 {
     private readonly BasketViewModel _basket;
-    private readonly DatabaseService _database;
+    private readonly IDatabaseService _database;
 
-    public CheckoutViewModel(BasketViewModel basket, DatabaseService database)
+    public CheckoutViewModel(BasketViewModel basket, IDatabaseService database)
     {
         _basket = basket;
         _database = database;

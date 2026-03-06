@@ -1,8 +1,8 @@
 using System.Collections.ObjectModel;
 using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
-using CoffeeShopApp.Models;
-using AppMenuItem = CoffeeShopApp.Models.MenuItem;
+using CoffeeShopApp.Core.Models;
+using AppMenuItem = CoffeeShopApp.Core.Models.MenuItem;
 
 namespace CoffeeShopApp.ViewModels;
 

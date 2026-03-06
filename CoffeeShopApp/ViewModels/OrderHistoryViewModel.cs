@@ -1,17 +1,17 @@
 using System.Collections.ObjectModel;
 using CommunityToolkit.Mvvm.Input;
-using CoffeeShopApp.Models;
-using CoffeeShopApp.Services;
+using CoffeeShopApp.Core.Models;
+using CoffeeShopApp.Core.Services;
 
 namespace CoffeeShopApp.ViewModels;
 
 public partial class OrderHistoryViewModel : BaseViewModel
 {
-    private readonly DatabaseService _database;
+    private readonly IDatabaseService _database;
 
     public ObservableCollection<Order> Orders { get; } = new();
 
-    public OrderHistoryViewModel(DatabaseService database)
+    public OrderHistoryViewModel(IDatabaseService database)
     {
         _database = database;
     }

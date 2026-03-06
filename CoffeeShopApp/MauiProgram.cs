@@ -1,4 +1,4 @@
-using CoffeeShopApp.Services;
+using CoffeeShopApp.Core.Services;
 using CoffeeShopApp.ViewModels;
 using CoffeeShopApp.Views;
 using Microsoft.Extensions.Logging;
@@ -19,7 +19,8 @@ public static class MauiProgram
             });
 
         // Services — Singleton (one instance for the app lifetime)
-        builder.Services.AddSingleton<DatabaseService>();
+        var dbPath = Path.Combine(FileSystem.AppDataDirectory, Core.Constants.DatabaseFilename);
+        builder.Services.AddSingleton<IDatabaseService>(_ => new DatabaseService(dbPath));
         builder.Services.AddSingleton<AppShell>();
 
         // ViewModels — BasketViewModel is Singleton so basket state is shared

@@ -28,7 +28,7 @@
                                    FontSize="16"
                                    FontAttributes="Bold"
                                    TextColor="White" />
-                            <Label Text="{Binding Subtotal, StringFormat='€{0:F2}'}"
+                            <Label Text="{Binding FormattedSubtotal}"
                                    FontSize="14"
                                    TextColor="#D4A96A" />
                         </VerticalStackLayout>
@@ -57,7 +57,7 @@
                              Spacing="12">
             <BoxView HeightRequest="1"
                      Color="#6F3D1F" />
-            <Label Text="{Binding Total, StringFormat='Total: €{0:F2}'}"
+            <Label Text="{Binding FormattedTotal}"
                    FontSize="20"
                    FontAttributes="Bold"
                    TextColor="White"

@@ -1,4 +1,5 @@
 using CommunityToolkit.Mvvm.ComponentModel;
+using CoffeeShopApp.Core.Helpers;
 using SQLite;
 
 namespace CoffeeShopApp.Core.Models;
@@ -18,4 +19,7 @@ public partial class OrderItem : ObservableObject
 
     [Ignore]
     public decimal Subtotal => Price * Quantity;
+
+    [Ignore]
+    public string FormattedSubtotal => CurrencyHelper.FormatEuro(Subtotal);
 }

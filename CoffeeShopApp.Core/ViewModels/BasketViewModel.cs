@@ -2,6 +2,7 @@ using System.Collections.ObjectModel;
 using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
 using CoffeeShopApp.Core.Models;
+using CoffeeShopApp.Core.Helpers;
 using AppMenuItem = CoffeeShopApp.Core.Models.MenuItem;
 
 namespace CoffeeShopApp.Core.ViewModels;
@@ -15,6 +16,7 @@ public partial class BasketViewModel : BaseViewModel
 
     public bool HasItems => Items.Count > 0;
     public int ItemCount => Items.Sum(i => i.Quantity);
+    public string FormattedTotal => CurrencyHelper.FormatEuro(Total);
 
     [RelayCommand]
     public void AddItem(AppMenuItem menuItem)
@@ -46,5 +48,6 @@ public partial class BasketViewModel : BaseViewModel
         Total = Items.Sum(i => i.Subtotal);
         OnPropertyChanged(nameof(HasItems));
         OnPropertyChanged(nameof(ItemCount));
+        OnPropertyChanged(nameof(FormattedTotal));
     }
 }

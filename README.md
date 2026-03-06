@@ -29,6 +29,8 @@ Continuous Assessment 1 (CA1) – The ATU Brew Coffee Shop App
 
 ## 1. Overview
 
+![Splash Screen](docs/screenshots/01-splash.jpg)
+
 **The ATU Brew** is a .NET MAUI mobile application for a small coffee shop, allowing customers to browse the menu and place orders from their mobile device.
 
 Key features:
@@ -134,7 +136,7 @@ CoffeeShopApp.Tests    → xUnit test project (references Core only, no MAUI dep
 
 ## 5. Menu
 
-See [coffee-shop.md](coffee-shop.md) for the full menu with prices.
+See [coffee-shop.md](docs/coffee-shop.md) for the full menu with prices.
 
 ## 6. Testing
 
@@ -170,5 +172,6 @@ Shell navigation and alerts are abstracted behind virtual methods (`ShowAlertAsy
 
 ## 8. Documentation
 
-- [coffee-shop.md](coffee-shop.md) – full menu with prices
+- [docs/app.md](docs/app.md) – full app walkthrough with screenshots
+- [docs/coffee-shop.md](docs/coffee-shop.md) – full menu with prices
 - [CONTRIBUTING.md](CONTRIBUTING.md) – git workflow, environment setup, device testing guide

@@ -104,3 +104,7 @@ ehthumbs.db
 *.swp
 *.swo
 *.log
+
+# GenAI agents
+AGENTS.md
+PLAN.md

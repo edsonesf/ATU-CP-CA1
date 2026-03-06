@@ -29,9 +29,11 @@ Continuous Assessment 1 (CA1) – The ATU Brew Coffee Shop App
 
 ## 1. Overview
 
+**The ATU Brew** is a .NET MAUI mobile application for a small coffee shop, allowing customers to browse the menu and place orders from their mobile device.
+
 <img src="docs/screenshots/01-splash.jpg" width="250" alt="Splash Screen" />
 
-**The ATU Brew** is a .NET MAUI mobile application for a small coffee shop, allowing customers to browse the menu and place orders from their mobile device.
+[The ATU Brew — App Walkthrough](docs/app.md) 
 
 Key features:
 - Browse menu by category: Hot Drinks, Cold Drinks, Food

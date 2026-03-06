@@ -24,12 +24,15 @@ public class DatabaseService
     public async Task SaveOrderAsync(Order order, List<OrderItem> items)
     {
         await InitAsync();
-        await _db!.InsertAsync(order);
-        foreach (var item in items)
+        await _db!.RunInTransactionAsync(tran =>
         {
-            item.OrderId = order.Id;
-            await _db.InsertAsync(item);
-        }
+            tran.Insert(order);
+            foreach (var item in items)
+            {
+                item.OrderId = order.Id;
+                tran.Insert(item);
+            }
+        });
     }
 
     public async Task<List<Order>> GetRecentOrdersAsync()

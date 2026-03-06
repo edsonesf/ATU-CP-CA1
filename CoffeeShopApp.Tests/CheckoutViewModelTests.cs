@@ -15,6 +15,7 @@ class FakeDatabaseService : IDatabaseService
         return Task.CompletedTask;
     }
     public Task<List<Order>> GetRecentOrdersAsync() => Task.FromResult(new List<Order>());
+    public Task<List<OrderItem>> GetOrderItemsAsync(int orderId) => Task.FromResult(new List<OrderItem>());
 }
 
 // Testable subclass — captures alerts instead of calling Shell

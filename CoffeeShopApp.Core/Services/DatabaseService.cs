@@ -43,4 +43,10 @@ public class DatabaseService : IDatabaseService
             .Where(o => o.CreatedAt >= since)
             .ToListAsync();
     }
+
+    public async Task<List<OrderItem>> GetOrderItemsAsync(int orderId)
+    {
+        await InitAsync();
+        return await _db!.Table<OrderItem>().Where(i => i.OrderId == orderId).ToListAsync();
+    }
 }

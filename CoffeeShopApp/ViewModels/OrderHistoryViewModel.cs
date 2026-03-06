@@ -17,6 +17,17 @@ public partial class OrderHistoryViewModel : BaseViewModel
     }
 
     [RelayCommand]
+    async Task SelectOrder(Order order) =>
+        await Shell.Current.GoToAsync(nameof(Views.OrderDetailPage), new Dictionary<string, object>
+        {
+            ["orderId"]      = order.Id,
+            ["orderNumber"]  = order.OrderNumber,
+            ["customerName"] = order.CustomerName,
+            ["total"]        = order.Total,
+            ["createdAt"]    = order.CreatedAt
+        });
+
+    [RelayCommand]
     async Task Load()
     {
         IsBusy = true;

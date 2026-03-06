@@ -28,6 +28,11 @@
                     <Grid ColumnDefinitions="*,Auto"
                           Padding="12,8"
                           Margin="0,4">
+                        <Grid.GestureRecognizers>
+                            <TapGestureRecognizer
+                                Command="{Binding Source={RelativeSource AncestorType={x:Type ContentPage}}, Path=BindingContext.SelectOrderCommand}"
+                                CommandParameter="{Binding .}" />
+                        </Grid.GestureRecognizers>
                         <VerticalStackLayout Grid.Column="0">
                             <Label Text="{Binding OrderNumber}"
                                    FontSize="16"

@@ -28,6 +28,7 @@ public static class MauiProgram
         builder.Services.AddTransient<MenuViewModel>();
         builder.Services.AddTransient<CheckoutViewModel>();
         builder.Services.AddTransient<OrderHistoryViewModel>();
+        builder.Services.AddTransient<OrderDetailViewModel>();
 
         // Pages
         builder.Services.AddTransient<MainMenuPage>();
@@ -37,6 +38,7 @@ public static class MauiProgram
         builder.Services.AddTransient<BasketPage>();
         builder.Services.AddTransient<CheckoutPage>();
         builder.Services.AddTransient<OrderHistoryPage>();
+        builder.Services.AddTransient<OrderDetailPage>();
 
 #if DEBUG
         builder.Logging.AddDebug();

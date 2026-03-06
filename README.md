@@ -31,10 +31,11 @@ Continuous Assessment 1 (CA1) – The ATU Brew Coffee Shop App
 
 Key features:
 - Browse menu by category: Hot Drinks, Cold Drinks, Food
-- Add items to basket with quantity controls
+- Add items to basket with quantity tracking
+- Remove items from basket
 - Checkout with customer name and phone number
-- Unique order number generated per order
-- Order history showing all orders placed today
+- Unique order number generated per order (`ATU-XXXXXXXX`)
+- Order history showing last 7 days of orders
 - Local data persistence using SQLite
 
 ## 2. Getting Started
@@ -42,14 +43,16 @@ Key features:
 ### Prerequisites
 
 - [.NET 9 SDK](https://dotnet.microsoft.com/download)
-- Android emulator or physical device
-- .NET MAUI workload installed
+- Android emulator or physical Android device (USB debugging enabled)
+- .NET MAUI Android workload
 
 ```bash
-dotnet workload install maui
+dotnet workload install maui-android
 ```
 
-### Build & Run
+> **Linux users:** Android SDK must be installed at `/usr/lib/android-sdk`. See [CONTRIBUTING.md](CONTRIBUTING.md) for full setup steps.
+
+### Build
 
 ```bash
 # Clone repository
@@ -57,13 +60,17 @@ git clone https://github.com/edsonesf/ATU-CP-CA1
 cd ATU-CP-CA1
 
 # Restore packages
-dotnet restore
+dotnet restore CoffeeShopApp/CoffeeShopApp.csproj
 
-# Build
-dotnet build
+# Build (Linux)
+dotnet build -p:AndroidSdkDirectory=/usr/lib/android-sdk CoffeeShopApp/CoffeeShopApp.csproj
+```
 
-# Run on Android emulator
-dotnet build -t:Run -f net9.0-android
+### Run on Device
+
+```bash
+# Connect Android device via USB with USB Debugging enabled, then:
+dotnet build -t:Run -f net9.0-android -p:AndroidSdkDirectory=/usr/lib/android-sdk CoffeeShopApp/CoffeeShopApp.csproj
 ```
 
 ## 3. Technology Stack
@@ -120,4 +127,5 @@ See [coffee-shop.md](coffee-shop.md) for the full menu with prices.
 
 ## 6. Documentation
 
-- [coffee-shop.md](coffee-shop.md) – menu data
+- [coffee-shop.md](coffee-shop.md) – full menu with prices
+- [CONTRIBUTING.md](CONTRIBUTING.md) – git workflow, environment setup, device testing guide

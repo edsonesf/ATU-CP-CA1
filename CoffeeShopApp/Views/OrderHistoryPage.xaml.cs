@@ -7,4 +7,10 @@ public partial class OrderHistoryPage : ContentPage
         InitializeComponent();
         BindingContext = vm;
     }
+
+    protected override void OnAppearing()
+    {
+        base.OnAppearing();
+        ((ViewModels.OrderHistoryViewModel)BindingContext).LoadCommand.Execute(null);
+    }
 }

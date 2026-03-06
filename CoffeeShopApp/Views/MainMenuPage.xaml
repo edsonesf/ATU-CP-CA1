@@ -49,6 +49,14 @@
                 CornerRadius="12"
                 Margin="0,20,0,0" />
 
+        <Button Text="📋  Order History"
+                Command="{Binding GoToOrderHistoryCommand}"
+                BackgroundColor="#3D2410"
+                TextColor="#D4A96A"
+                FontSize="16"
+                HeightRequest="50"
+                CornerRadius="12" />
+
     </VerticalStackLayout>
 
 </ContentPage>

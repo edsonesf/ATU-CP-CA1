@@ -54,4 +54,7 @@ public partial class MenuViewModel : BaseViewModel
 
     [RelayCommand]
     async Task GoToBasket() => await Shell.Current.GoToAsync(nameof(Views.BasketPage));
+
+    [RelayCommand]
+    async Task GoToOrderHistory() => await Shell.Current.GoToAsync(nameof(Views.OrderHistoryPage));
 }

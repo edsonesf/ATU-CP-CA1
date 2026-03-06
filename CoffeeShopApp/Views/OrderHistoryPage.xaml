@@ -2,5 +2,55 @@
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="CoffeeShopApp.Views.OrderHistoryPage"
-             Title="Order History">
+             Title="Today's Orders"
+             BackgroundColor="#2C1A0E">
+
+    <Grid RowDefinitions="Auto,*"
+          Padding="16">
+
+        <ActivityIndicator Grid.Row="0"
+                           IsRunning="{Binding IsBusy}"
+                           IsVisible="{Binding IsBusy}"
+                           Color="#D4A96A"
+                           HorizontalOptions="Center" />
+
+        <CollectionView Grid.Row="1"
+                        ItemsSource="{Binding Orders}">
+            <CollectionView.EmptyView>
+                <Label Text="No orders today yet."
+                       TextColor="#D4A96A"
+                       FontSize="16"
+                       HorizontalOptions="Center"
+                       VerticalOptions="Center" />
+            </CollectionView.EmptyView>
+            <CollectionView.ItemTemplate>
+                <DataTemplate>
+                    <Grid ColumnDefinitions="*,Auto"
+                          Padding="12,8"
+                          Margin="0,4">
+                        <VerticalStackLayout Grid.Column="0">
+                            <Label Text="{Binding OrderNumber}"
+                                   FontSize="16"
+                                   FontAttributes="Bold"
+                                   TextColor="White" />
+                            <Label Text="{Binding CustomerName}"
+                                   FontSize="14"
+                                   TextColor="#D4A96A" />
+                            <Label Text="{Binding CreatedAt, StringFormat='{0:HH:mm}'}"
+                                   FontSize="12"
+                                   TextColor="#888" />
+                        </VerticalStackLayout>
+                        <Label Grid.Column="1"
+                               Text="{Binding Total, StringFormat='€{0:F2}'}"
+                               FontSize="18"
+                               FontAttributes="Bold"
+                               TextColor="White"
+                               VerticalOptions="Center" />
+                    </Grid>
+                </DataTemplate>
+            </CollectionView.ItemTemplate>
+        </CollectionView>
+
+    </Grid>
+
 </ContentPage>

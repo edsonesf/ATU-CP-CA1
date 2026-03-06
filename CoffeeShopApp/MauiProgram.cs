@@ -29,6 +29,9 @@ public static class MauiProgram
 
         // Pages
         builder.Services.AddTransient<MainMenuPage>();
+        builder.Services.AddTransient<HotDrinksPage>();
+        builder.Services.AddTransient<ColdDrinksPage>();
+        builder.Services.AddTransient<FoodPage>();
         builder.Services.AddTransient<BasketPage>();
         builder.Services.AddTransient<CheckoutPage>();
         builder.Services.AddTransient<OrderHistoryPage>();

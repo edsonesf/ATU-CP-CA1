@@ -2,5 +2,53 @@
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="CoffeeShopApp.Views.MainMenuPage"
-             Title="The ATU Brew">
+             Title="The ATU Brew"
+             BackgroundColor="#2C1A0E">
+
+    <VerticalStackLayout VerticalOptions="Center"
+                         Spacing="20"
+                         Padding="32">
+
+        <Label Text="What would you like?"
+               FontSize="22"
+               FontAttributes="Bold"
+               TextColor="White"
+               HorizontalOptions="Center" />
+
+        <Button Text="☕  Hot Drinks"
+                Command="{Binding GoToHotDrinksCommand}"
+                BackgroundColor="#6F3D1F"
+                TextColor="White"
+                FontSize="18"
+                HeightRequest="60"
+                CornerRadius="12" />
+
+        <Button Text="🧊  Cold Drinks"
+                Command="{Binding GoToColdDrinksCommand}"
+                BackgroundColor="#6F3D1F"
+                TextColor="White"
+                FontSize="18"
+                HeightRequest="60"
+                CornerRadius="12" />
+
+        <Button Text="🥐  Food"
+                Command="{Binding GoToFoodCommand}"
+                BackgroundColor="#6F3D1F"
+                TextColor="White"
+                FontSize="18"
+                HeightRequest="60"
+                CornerRadius="12" />
+
+        <Button Text="🛒  View Basket"
+                Command="{Binding GoToBasketCommand}"
+                BackgroundColor="#D4A96A"
+                TextColor="#2C1A0E"
+                FontSize="18"
+                FontAttributes="Bold"
+                HeightRequest="60"
+                CornerRadius="12"
+                Margin="0,20,0,0" />
+
+    </VerticalStackLayout>
+
 </ContentPage>

@@ -36,6 +36,7 @@
                             WidthRequest="44"
                             HeightRequest="44"
                             CornerRadius="22"
+                            Clicked="OnAddClicked"
                             Command="{Binding Source={RelativeSource AncestorType={x:Type ContentPage}}, Path=BindingContext.AddItemCommand}"
                             CommandParameter="{Binding .}" />
                 </Grid>

@@ -3,7 +3,7 @@ using CoffeeShopApp.Core.Models;
 
 namespace CoffeeShopApp.Core.Services;
 
-public class DatabaseService
+public class DatabaseService : IDatabaseService
 {
     private readonly string _dbPath;
     SQLiteAsyncConnection? _db;

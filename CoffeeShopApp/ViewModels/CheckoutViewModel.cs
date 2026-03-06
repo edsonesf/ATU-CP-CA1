@@ -33,6 +33,12 @@ public partial class CheckoutViewModel : BaseViewModel
             return;
         }
 
+        if (!System.Text.RegularExpressions.Regex.IsMatch(Phone.Trim(), @"^\+?\d{7,15}$"))
+        {
+            await Shell.Current.DisplayAlert("Invalid Phone", "Please enter a valid phone number (digits only, 7–15 characters).", "OK");
+            return;
+        }
+
         IsBusy = true;
         try
         {

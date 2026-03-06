@@ -1,0 +1,13 @@
+/home/edson/Documents/ATU/CrossPlatform/CA1/ATU-CP-CA1/CoffeeShopApp.Core/obj/Debug/net9.0/CoffeeShopApp.Core.csproj.AssemblyReference.cache
+/home/edson/Documents/ATU/CrossPlatform/CA1/ATU-CP-CA1/CoffeeShopApp.Core/obj/Debug/net9.0/CoffeeShopApp.Core.GeneratedMSBuildEditorConfig.editorconfig
+/home/edson/Documents/ATU/CrossPlatform/CA1/ATU-CP-CA1/CoffeeShopApp.Core/obj/Debug/net9.0/CoffeeShopApp.Core.AssemblyInfoInputs.cache
+/home/edson/Documents/ATU/CrossPlatform/CA1/ATU-CP-CA1/CoffeeShopApp.Core/obj/Debug/net9.0/CoffeeShopApp.Core.AssemblyInfo.cs
+/home/edson/Documents/ATU/CrossPlatform/CA1/ATU-CP-CA1/CoffeeShopApp.Core/obj/Debug/net9.0/CoffeeShopApp.Core.csproj.CoreCompileInputs.cache
+/home/edson/Documents/ATU/CrossPlatform/CA1/ATU-CP-CA1/CoffeeShopApp.Core/obj/Debug/net9.0/CoffeeShopApp.Core.sourcelink.json
+/home/edson/Documents/ATU/CrossPlatform/CA1/ATU-CP-CA1/CoffeeShopApp.Core/bin/Debug/net9.0/CoffeeShopApp.Core.deps.json
+/home/edson/Documents/ATU/CrossPlatform/CA1/ATU-CP-CA1/CoffeeShopApp.Core/bin/Debug/net9.0/CoffeeShopApp.Core.dll
+/home/edson/Documents/ATU/CrossPlatform/CA1/ATU-CP-CA1/CoffeeShopApp.Core/bin/Debug/net9.0/CoffeeShopApp.Core.pdb
+/home/edson/Documents/ATU/CrossPlatform/CA1/ATU-CP-CA1/CoffeeShopApp.Core/obj/Debug/net9.0/CoffeeShopApp.Core.dll
+/home/edson/Documents/ATU/CrossPlatform/CA1/ATU-CP-CA1/CoffeeShopApp.Core/obj/Debug/net9.0/refint/CoffeeShopApp.Core.dll
+/home/edson/Documents/ATU/CrossPlatform/CA1/ATU-CP-CA1/CoffeeShopApp.Core/obj/Debug/net9.0/CoffeeShopApp.Core.pdb
+/home/edson/Documents/ATU/CrossPlatform/CA1/ATU-CP-CA1/CoffeeShopApp.Core/obj/Debug/net9.0/ref/CoffeeShopApp.Core.dll
